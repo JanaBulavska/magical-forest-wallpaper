@@ -1,0 +1,284 @@
+/* 
+  This is a general reset.
+  It removes default browser spacing from all elements.
+  Different browsers add their own margin and padding,
+  so this makes the design more predictable.
+*/
+* {
+box-sizing: border-box;
+/* Removes default outer spacing */
+margin: 0;
+/* Removes default inner spacing */
+padding: 0;
+}
+/* 
+  This styles the whole page.
+  body means everything visible on the page.
+*/
+body {
+/* This chooses the main font for the website */
+font-family: Arial, Helvetica, sans-serif;
+/* This is the background color behind everything */
+background: #efeae2;
+/* This is the default text color */
+color: #2d2d2d;
+}
+/* 
+  This is the main layout container.
+  It holds the left control panel and the right canvas area.
+*/
+.app {
+/* flex puts child elements next to each other in a row */
+display: flex;
+/* The app takes at least the full height of the screen */
+min-height: 100vh;
+}/* 
+  This styles the left control panel.
+  This is where sliders and buttons are placed.
+*/
+.controls {
+/* Fixed width of the left panel */
+width: 340px;
+/* This stops the panel from becoming smaller */
+min-width: 340px;
+/* Semi-transparent white background */
+background: rgba(255, 255, 255, 0.72);
+/* Adds a glass-like blur effect behind the panel */
+backdrop-filter: blur(10px);
+/* Thin line between the panel and the canvas area */
+border-right: 1px solid rgba(0, 0, 0, 0.08);
+/* Inner spacing inside the panel */
+padding: 28px 22px;
+/* Makes the panel stay visible when scrolling */
+position: sticky;
+/* Keeps the sticky panel attached to the top */
+top: 0;
+/* Panel height is the full screen height */
+height: 100vh;
+/* If content is too long, the panel can scroll */
+overflow-y: auto;
+}
+/* 
+  This styles the main title inside the control panel.
+*/
+.controls h1 {
+/* Size of the title text */
+font-size: 28px;
+/* Space between lines if the title wraps */
+line-height: 1.1;
+/* Space under the title */
+margin-bottom: 10px;
+}
+/* 
+  This styles the short description under the title.
+*/
+.subtitle {
+/* Smaller text size */
+font-size: 14px;
+/* Makes the text easier to read */
+line-height: 1.5;
+/* Softer gray color */
+color: #555;
+/* Space under the subtitle */
+margin-bottom: 24px;
+}
+/* 
+  This styles one control block.
+  Each slider or color picker is inside a control-group.
+*/
+.control-group {
+/* Space under each control block */
+margin-bottom: 18px;
+}
+/* 
+  This styles the label above each slider.
+  The label contains the parameter name and the number value.
+*/
+.control-group label {
+/* flex puts the text and number on one line */
+display: flex;
+/* Pushes the name to the left and value to the right */
+justify-content: space-between;
+/* Centers items vertically */
+align-items: center;
+/* Space between label text and value */
+gap: 12px;
+/* Space between label and slider */
+margin-bottom: 8px;
+/* Label text size */
+font-size: 14px;
+/* Makes label text bold */
+font-weight: 600;
+}
+/* 
+  This styles all range sliders.
+*/
+.control-group input[type="range"] {
+/* Slider takes full width of the control panel */
+width: 100%;
+/* Shows pointer cursor when hovering */
+cursor: pointer;
+}
+/* 
+  This styles the color picker.
+*/
+.control-group input[type="color"] {
+/* Color picker takes full width */
+width: 100%;
+/* Height of the color picker */
+height: 44px;
+/* Removes default border */
+border: none;
+/* Removes default background */
+background: transparent;
+/* Shows pointer cursor */
+cursor: pointer;
+}
+/* 
+  This is the container for the two buttons.
+*/
+.button-row {
+/* flex is used here too */
+display: flex;
+/* Buttons are placed one under another */
+flex-direction: column;
+/* Space between buttons */
+gap: 12px;
+/* Space above buttons */
+margin-top: 22px;
+}
+/* 
+  This styles all buttons.
+*/
+button {
+/* Removes default button border */
+border: none;
+/* Inner spacing inside buttons */
+padding: 14px 16px;
+/* Rounded button corners */
+border-radius: 12px;
+/* Shows pointer cursor */
+cursor: pointer;
+/* Button text size */
+font-size: 15px;
+/* Makes button text bold */
+font-weight: 700;
+/* Makes hover animation smooth */
+transition: 0.2s ease;
+}
+/* 
+  This styles only the Regenerate button.
+  #regenerateBtn selects the element with id="regenerateBtn".
+*/
+#regenerateBtn {
+/* Purple/pink background */
+background: #d9b2d6;
+/* Dark text color */
+color: #2d1c2f;
+}
+/* 
+  This styles only the Save Wallpaper button.
+*/
+#saveBtn {
+/* Soft green background */
+background: #b9d9c5;
+/* Dark green text color */
+color: #173221;
+}
+/* 
+  This effect happens when the mouse is over a button.
+*/
+button:hover {
+/* Moves the button slightly up */
+transform: translateY(-1px);
+/* Makes the button a tiny bit transparent */
+opacity: 0.95;
+}/* 
+  This styles the small note under the buttons.
+*/
+.notes {
+/* Space above the note */
+margin-top: 22px;
+/* Small text size */
+font-size: 13px;
+/* Comfortable line spacing */
+line-height: 1.5;
+/* Gray text color */
+color: #666;
+}
+/* 
+  This styles the right side of the page.
+  The canvas with the generated wallpaper is placed here.
+*/
+.canvas-area {
+/* Takes all remaining space after the left panel */
+flex: 1;
+/* Uses flex to center the canvas */
+display: flex;
+/* Centers canvas vertically */
+align-items: center;
+/* Centers canvas horizontally */
+justify-content: center;
+/* Space around the canvas */
+padding: 24px;
+/* Allows scrolling if canvas is too large */
+overflow: auto;
+}
+/* 
+  This is the container where p5.js puts the canvas.
+*/
+#canvas-container {
+/* Adds shadow around the canvas */
+box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+/* Rounds the corners of the canvas area */
+border-radius: 14px;
+/* Hides anything that goes outside rounded corners */
+overflow: hidden;
+}
+/* 
+  This styles the actual p5.js canvas.
+*/
+canvas {
+/* Removes small unwanted space under canvas */
+display: block;
+/* Canvas cannot become wider than its container */
+max-width: 100%;
+/* Keeps correct proportions when resized */
+height: auto;
+}
+/* 
+  This part makes the design responsive.
+  It changes layout on smaller screens.
+*/
+@media (max-width: 980px) {
+/* 
+    On smaller screens, the layout becomes vertical.
+    The controls go on top and canvas goes below.
+  */
+.app {
+flex-direction: column;
+  }
+/* 
+    The control panel becomes full width on smaller screens.
+  */
+.controls {
+/* Full screen width */
+width: 100%;
+/* Prevents fixed desktop width */
+min-width: 100%;
+/* Height becomes automatic */
+height: auto;
+/* It no longer stays sticky */
+position: relative;
+/* Removes right border */
+border-right: none;
+/* Adds bottom border instead */
+border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+/* 
+    Smaller padding around canvas on small screens.
+  */
+.canvas-area {
+padding: 16px;
+  }
+}

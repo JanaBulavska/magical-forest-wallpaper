@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magical Forest Wallpaper Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="controls">
+      <h1>Magical Forest Wallpaper</h1>
+      <p class="subtitle">
+      </p>
+      <div class="control-group">
+        <label for="randomness">Mushroom Randomness <span id="randomnessValue">60</span></label>
+        <input type="range" id="randomness" min="0" max="100" value="60" />
+      </div>
+      <div class="control-group">
+        <label for="height">Mushroom Height <span id="heightValue">70</span></label>
+        <input type="range" id="height" min="20" max="100" value="70" />
+      </div>
+      <div class="control-group">
+        <label for="capShape">Cap Shape <span id="capShapeValue">50</span></label>
+        <input type="range" id="capShape" min="0" max="100" value="50" />
+      </div>
+      <div class="control-group">
+        <label for="glow">Glow Intensity <span id="glowValue">55</span></label>
+        <input type="range" id="glow" min="0" max="100" value="55" />
+      </div>
+      <div class="control-group">
+        <label for="spores">Spore Intensity <span id="sporesValue">65</span></label>
+        <input type="range" id="spores" min="0" max="100" value="65" />
+      </div>
+      <!-- VIEW MODE -->
+      <div class="control-group">
+        <label for="viewMode">View Mode</label>
+        <select id="viewMode">
+          <option value="single">Single Tile</option>
+          <option value="repeat">Repeat Preview 3×3</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="bgColor">Background Color</label>
+        <input type="color" id="bgColor" value="#f5f1e9" />
+      </div>
+      <div class="button-row">
+        <button id="regenerateBtn">Regenerate</button>
+        <button id="saveBtn">Save Wallpaper</button>
+      </div>
+      <div class="notes">
+        <p>
+          The wallpaper is built as a repeatable seamless pattern.
+        </p>
+      </div>
+    </aside>
+    <main class="canvas-area">
+      <div id="canvas-container"></div>
+    </main>
+  </div>
+  <script src="sketch.js"></script>
+</body>
+</html>
